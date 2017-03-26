@@ -1,6 +1,6 @@
 ;(function(){
 
-    function cloneOwn(){
+    function cloneOwn() {
 
         var arg = Array.prototype.slice.call(arguments);
 
@@ -17,11 +17,19 @@
 
     }
 
-    Function.prototype._new = function(){
+    function setPrototypeOf (obj, proto) {
+
+        obj.__proto__ = proto;
+
+        return obj;
+
+    }
+
+    Function.prototype._new = function() {
 
         var obj = cloneOwn({}, this._initial);
         
-        obj.__proto__ =  this.prototype;
+        setPrototypeOf(obj, this.prototype);
 
         var result = this.apply(obj, arguments);
         
@@ -30,7 +38,7 @@
     }
 
     
-    Function.prototype._extend = function(){
+    Function.prototype._extend = function() {
 
         var arg = Array.prototype.slice.call(arguments);
 
@@ -44,8 +52,10 @@
 
             p.apply(this._initial, arg);
             
+            setPrototypeOf(this, p);
+
             //this.prototype = cloneOwn(Object.create(p.prototype, {constructor:{value: this}}), this.prototype);
-            this.prototype.__proto__ = p.prototype;
+            setPrototypeOf(this.prototype, p.prototype);
 
         }
         

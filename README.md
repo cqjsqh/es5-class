@@ -27,4 +27,5 @@ console.log( a instanceof B ); 	// true
 console.log( a instanceof C );	// true
 console.log( a );   // {_b: "b", _c: "c", _a: "a"}
 a.say();    // a
+console.log( A.__proto__ )      // B
 ```
