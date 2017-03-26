@@ -19,6 +19,6 @@ var a = A._extend(C, 'c')._new('a');
 console.log( a instanceof A ); 	// true
 console.log( a instanceof B ); 	// true
 console.log( a instanceof C );	// true
-console.log( a );				// {_b: "b", _c: "c", _a: "a"}
-a.say();              			// a
+console.log( a );	// {_b: "b", _c: "c", _a: "a"}
+a.say();	// a
 ```
