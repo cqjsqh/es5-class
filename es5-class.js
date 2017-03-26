@@ -38,13 +38,17 @@
                 
         var p = arg.shift();
 
-        if ( typeof p === 'function' && !(this.prototype instanceof p) ){
+        if ( typeof p === 'function' ){
 
             p.apply(this._initial, arg);
             
-            p.prototype.__proto__ = this.prototype.__proto__;
+            if ( !(this.prototype instanceof p) ){
+                
+                p.prototype.__proto__ = this.prototype.__proto__;
 
-            this.prototype.__proto__ = p.prototype;
+                this.prototype.__proto__ = p.prototype;
+
+            }
 
         }
         
