@@ -1,12 +1,25 @@
 ;(function(){
 
+    function cloneOwn(){
+
+        var arg = Array.prototype.slice.call(arguments);
+
+        var target, refult = arg.shift() || {};
+        
+        while(target = arg.shift(), typeof target === 'object'){
+
+            for(var i in target)
+                target.hasOwnProperty(i) && (refult[i] = target[i]);
+
+        }
+        
+        return refult;
+
+    }
+
     Function.prototype._new = function(){
 
-        var obj = {};
-        
-        if ( this._initial )
-        for ( var i in this._initial )
-            this._initial.hasOwnProperty(i) && ( obj[i] = this._initial[i] );
+        var obj = cloneOwn({}, this._initial);
         
         obj.__proto__ =  this.prototype;
 
