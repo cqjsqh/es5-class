@@ -11,7 +11,7 @@ function A (name) { this._a = name;}
 A.prototype.say = function(){ console.log(this._a); };
 ```
 
-引入es5-class后,实现继承：
+引入es5-class.js后,实现继承：
 ```
 // 调用_extend继承B
 A._extend(B, 'b');
