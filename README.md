@@ -14,14 +14,17 @@ A.prototype.say = function(){ console.log(this._a); };
 引入es5-class.js后,实现继承：
 ```
 // 调用_extend继承B
+B._extend(C, 'c');
 A._extend(B, 'b');
 
-// 继承C,调用_new生成实例a
-var a = A._extend(C, 'c')._new('a');
+// 调用_new生成实例a
+var a = A._new('a');
+
+
 
 console.log( a instanceof A ); 	// true
 console.log( a instanceof B ); 	// true
 console.log( a instanceof C );	// true
-console.log( a );	// {_b: "b", _c: "c", _a: "a"}
-a.say();	// a
+console.log( a );   // {_b: "b", _c: "c", _a: "a"}
+a.say();    // a
 ```

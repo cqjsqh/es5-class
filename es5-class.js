@@ -34,21 +34,18 @@
 
         var arg = Array.prototype.slice.call(arguments);
 
-        this._initial = this._initial || {};
+        this._initial = {};
                 
         var p = arg.shift();
 
         if ( typeof p === 'function' ){
 
+            cloneOwn(this._initial, p._initial);
+
             p.apply(this._initial, arg);
             
-            if ( !(this.prototype instanceof p) ){
-                
-                p.prototype.__proto__ = this.prototype.__proto__;
-
-                this.prototype.__proto__ = p.prototype;
-
-            }
+            //this.prototype = cloneOwn(Object.create(p.prototype, {constructor:{value: this}}), this.prototype);
+            this.prototype.__proto__ = p.prototype;
 
         }
         
