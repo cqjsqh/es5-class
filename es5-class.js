@@ -4,16 +4,16 @@
 
         var arg = Array.prototype.slice.call(arguments);
 
-        var target, refult = arg.shift() || {};
+        var target, result = arg.shift() || {};
         
         while(target = arg.shift(), typeof target === 'object'){
 
             for(var i in target)
-                target.hasOwnProperty(i) && (refult[i] = target[i]);
+                target.hasOwnProperty(i) && (result[i] = target[i]);
 
         }
         
-        return refult;
+        return result;
 
     }
 
