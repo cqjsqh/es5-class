@@ -27,4 +27,4 @@ a.say();                        // a
 console.log( A.__proto__ )      // B
 ```
 
-注意：原生构造函数不支持继承，如：Array
+提示：原生构造函数es5不支持继承，如：Array
